@@ -214,6 +214,48 @@
       font-weight: 900;
     }
 
+    .portrait.photo {
+      position: relative;
+      min-height: 320px;
+      overflow: hidden;
+    }
+
+    .portrait.photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 24%;
+    }
+
+    .portrait.photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(23, 33, 43, 0.02), rgba(23, 33, 43, 0.28));
+      z-index: 1;
+    }
+
+    .portrait-initials {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      width: 96px;
+      height: 96px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      border-radius: 50%;
+      background: rgba(23, 33, 43, 0.58);
+      color: #ffffff;
+      font-size: 2rem;
+      font-weight: 900;
+    }
+
+    .portrait.photo.has-image .portrait-initials {
+      display: none;
+    }
+
     .quick-facts {
       display: grid;
       gap: 0;
@@ -504,7 +546,10 @@
       </div>
 
       <aside class="hero-panel" aria-label="Profile snapshot">
-        <div class="portrait">ZB</div>
+        <div class="portrait photo" role="img" aria-label="Zaldy L. Bernabe professional profile photo">
+          <img src="profile-photo.jpg" alt="" onload="this.parentElement.classList.add('has-image')" onerror="this.remove()">
+          <span class="portrait-initials">ZB</span>
+        </div>
         <div class="quick-facts">
           <div class="fact"><span>Role</span><span>Senior Commissioning Engineer</span></div>
           <div class="fact"><span>Location</span><span>Ahmadi, Kuwait</span></div>
